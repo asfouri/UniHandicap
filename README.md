@@ -116,9 +116,7 @@ UniHandicap/
 ├── database/
 │   └── schema.sql
 ├── docs/
-│   ├── Report.pdf
-│   ├── Rapport_Projet_DisabiliteApp.pdf
-│   └── PORTFOLIO_PRESENTATION.md
+│   └── Report.pdf
 ├── screenshots/
 │   └── (documentation and UI screenshots)
 ├── videos/
@@ -379,14 +377,6 @@ See the voice-assisted accessibility feature in action. Control the application 
 Full project report:
 
 [📘 Project Report](docs/Report.pdf)
-
-Legacy project report (French):
-
-[📘 Rapport Projet DisabiliteApp](docs/Rapport_Projet_DisabiliteApp.pdf)
-
-Portfolio presentation file:
-
-[💼 Portfolio Presentation](docs/PORTFOLIO_PRESENTATION.md)
 
 ---
 
