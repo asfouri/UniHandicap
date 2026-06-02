@@ -7,13 +7,13 @@
 ![Build](https://img.shields.io/badge/Build-Maven-red)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-> **Portfolio project:** a JavaFX desktop application that helps universities manage disability accommodation requests, accessibility complaints, notifications, audit history, and PDF exports through a structured student/admin workflow.
+> **Portfolio project:** a JavaFX desktop application that helps universities manage disability accommodation requests, accessibility complaints, notifications, audit history, and PDF exports through an accessible, role-based interface.
 
 ---
 
 ## 🎯 Portfolio Summary
 
-**UniHandicap** is a desktop application designed for university accessibility services. It replaces fragmented workflows such as emails, paper forms, and spreadsheets with a centralized system where students can submit accommodation requests and complaints, while administrators can process, archive, and track them efficiently.
+**UniHandicap** is a desktop application designed for university accessibility services. It replaces fragmented workflows such as emails, paper forms, and spreadsheets with a centralized system where students submit accommodation requests and administrators manage them efficiently.
 
 This project demonstrates practical skills in **Java**, **JavaFX**, **MVC architecture**, **JDBC database access**, **role-based workflows**, **accessibility-oriented UI design**, and **technical documentation**.
 
@@ -21,7 +21,7 @@ This project demonstrates practical skills in **Java**, **JavaFX**, **MVC archit
 
 ## 🧩 Problem Solved
 
-Universities need to manage accommodation requests for students with disabilities in a reliable and accessible way. Manual processes can cause lost requests, slow treatment, poor traceability, and limited communication between students and administration.
+Universities need to manage accommodation requests for students with disabilities in a reliable and accessible way. Manual processes can cause lost requests, slow treatment, poor traceability, and accessibility barriers.
 
 UniHandicap provides:
 
@@ -116,10 +116,13 @@ UniHandicap/
 ├── database/
 │   └── schema.sql
 ├── docs/
+│   ├── Report.pdf
 │   ├── Rapport_Projet_DisabiliteApp.pdf
 │   └── PORTFOLIO_PRESENTATION.md
 ├── screenshots/
-│   └── .gitkeep
+│   └── (documentation and UI screenshots)
+├── videos/
+│   └── (demo and test videos)
 ├── src/
 │   ├── main/java/com/universite/
 │   └── main/resources/
@@ -196,31 +199,188 @@ run-javafx.cmd
 
 ## 🖼️ Screenshots
 
-Add your application screenshots in the `screenshots/` folder, then update this section:
+### 📐 Architecture & Design Documentation
 
-```md
-![Login Screen](screenshots/login.png)
-![Student Dashboard](screenshots/student-dashboard.png)
-![Admin Dashboard](screenshots/admin-dashboard.png)
-![Accommodation Request Form](screenshots/request-form.png)
-```
+<div align="center">
+<table>
+<tr>
+<td width="33%">
+<a href="screenshots/01-class-diagram.png">
+  <img src="screenshots/01-class-diagram.png" width="100%" alt="Class Diagram">
+</a>
+<sub><b>Class Diagram</b><br/>System Architecture</sub>
+</td>
+<td width="33%">
+<a href="screenshots/02-use-case-requests.png">
+  <img src="screenshots/02-use-case-requests.png" width="100%" alt="Use Case Requests">
+</a>
+<sub><b>Use Case Diagram</b><br/>Request Management</sub>
+</td>
+<td width="33%">
+<a href="screenshots/03-global-use-case-modules.png">
+  <img src="screenshots/03-global-use-case-modules.png" width="100%" alt="Global Use Cases">
+</a>
+<sub><b>Global Use Cases</b><br/>All Modules</sub>
+</td>
+</tr>
+</table>
+</div>
 
-Recommended screenshots for a portfolio:
+### 🔄 Sequence Diagrams
 
-1. Color-vision accessibility test
-2. Login screen
-3. Student dashboard
-4. New accommodation request form
-5. Complaint form
-6. Admin dashboard
-7. Archives/search screen
-8. PDF export result
+<div align="center">
+<table>
+<tr>
+<td width="33%">
+<a href="screenshots/04-sequence-login.png">
+  <img src="screenshots/04-sequence-login.png" width="100%" alt="Login Flow">
+</a>
+<sub><b>Login Sequence</b><br/>User Authentication</sub>
+</td>
+<td width="33%">
+<a href="screenshots/05-sequence-accessibility-startup.png">
+  <img src="screenshots/05-sequence-accessibility-startup.png" width="100%" alt="Accessibility Startup">
+</a>
+<sub><b>Accessibility Startup</b><br/>Color Vision Test</sub>
+</td>
+<td width="33%">
+<a href="screenshots/06-sequence-request-submission.png">
+  <img src="screenshots/06-sequence-request-submission.png" width="100%" alt="Request Submission">
+</a>
+<sub><b>Request Submission</b><br/>Process Flow</sub>
+</td>
+</tr>
+</table>
+</div>
+
+### 👨‍🎓 Student Workspace
+
+<div align="center">
+<table>
+<tr>
+<td width="50%">
+<a href="screenshots/12-color-vision-test-red-green.png">
+  <img src="screenshots/12-color-vision-test-red-green.png" width="100%" alt="Color Vision Test">
+</a>
+<sub><b>Color Vision Test</b><br/>Red/Green Blindness Detection</sub>
+</td>
+<td width="50%">
+<a href="screenshots/13-color-vision-test-orange-green.png">
+  <img src="screenshots/13-color-vision-test-orange-green.png" width="100%" alt="Color Vision Test 2">
+</a>
+<sub><b>Color Vision Test</b><br/>Orange/Green Blindness Detection</sub>
+</td>
+</tr>
+<tr>
+<td width="50%">
+<a href="screenshots/07-login-screen.png">
+  <img src="screenshots/07-login-screen.png" width="100%" alt="Login Screen">
+</a>
+<sub><b>Login Screen</b><br/>Secure Authentication</sub>
+</td>
+<td width="50%">
+<a href="screenshots/08-student-request-form.png">
+  <img src="screenshots/08-student-request-form.png" width="100%" alt="Request Form">
+</a>
+<sub><b>Accommodation Request</b><br/>Submit & Document</sub>
+</td>
+</tr>
+<tr>
+<td width="50%">
+<a href="screenshots/09-student-request-history.png">
+  <img src="screenshots/09-student-request-history.png" width="100%" alt="Request History">
+</a>
+<sub><b>Request History</b><br/>Track Status</sub>
+</td>
+<td width="50%">
+<a href="screenshots/16-student-dashboard-notifications.png">
+  <img src="screenshots/16-student-dashboard-notifications.png" width="100%" alt="Notifications">
+</a>
+<sub><b>Notifications</b><br/>Audio & Visual Alerts</sub>
+</td>
+</tr>
+</table>
+</div>
+
+### 🛠️ Administrator Workspace
+
+<div align="center">
+<table>
+<tr>
+<td width="50%">
+<a href="screenshots/10-admin-dashboard-statistics.png">
+  <img src="screenshots/10-admin-dashboard-statistics.png" width="100%" alt="Admin Dashboard">
+</a>
+<sub><b>Admin Dashboard</b><br/>Statistics & Overview</sub>
+</td>
+<td width="50%">
+<a href="screenshots/11-admin-archives-search.png">
+  <img src="screenshots/11-admin-archives-search.png" width="100%" alt="Archives & Search">
+</a>
+<sub><b>Archives & Search</b><br/>Filter Records</sub>
+</td>
+</tr>
+</table>
+</div>
+
+### ♿ Accessibility & Export Features
+
+<div align="center">
+<table>
+<tr>
+<td width="50%">
+<a href="screenshots/14-voice-command-button.png">
+  <img src="screenshots/14-voice-command-button.png" width="100%" alt="Voice Command">
+</a>
+<sub><b>Voice Input</b><br/>Voice Commands</sub>
+</td>
+<td width="50%">
+<a href="screenshots/15-pdf-export-button.png">
+  <img src="screenshots/15-pdf-export-button.png" width="100%" alt="PDF Export">
+</a>
+<sub><b>PDF Export</b><br/>Request Summaries</sub>
+</td>
+</tr>
+</table>
+</div>
+
+---
+
+## 🎬 Demo Videos
+
+Watch the application in action! These videos demonstrate key features and workflows:
+
+### 📹 Standard Workflow Demo
+
+Experience the complete user journey through UniHandicap, from the color vision accessibility test to submitting accommodation requests.
+
+<div align="center">
+
+**[▶️ Watch Full Demo - TestNormal.mp4](videos/TestNormal.mp4)**
+
+</div>
+
+---
+
+### 🎤 Voice Command Demo
+
+See the voice-assisted accessibility feature in action. Control the application using natural voice commands for hands-free interaction.
+
+<div align="center">
+
+**[▶️ Watch Voice Demo - CommandeVocal.mp4](videos/CommandeVocal.mp4)**
+
+</div>
 
 ---
 
 ## 📄 Documentation
 
 Full project report:
+
+[📘 Project Report](docs/Report.pdf)
+
+Legacy project report (French):
 
 [📘 Rapport Projet DisabiliteApp](docs/Rapport_Projet_DisabiliteApp.pdf)
 
@@ -242,7 +402,7 @@ Portfolio presentation file:
 
 This is an academic team project. For portfolio use, clearly mention your exact contribution in interviews, your CV, and the GitHub repository description.
 
-### Suggested “My Contribution” Section
+### Suggested "My Contribution" Section
 
 Replace this with your real contribution before publishing:
 
