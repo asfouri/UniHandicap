@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.universite.controller.LoginController"
+            prefWidth="900" prefHeight="620">
+
+    <!-- En-tête -->
+    <top>
+        <HBox styleClass="header-bar" alignment="CENTER_LEFT" spacing="15">
+            <Label text="🏛" style="-fx-font-size: 28px;"/>
+            <VBox>
+                <Label styleClass="header-titre" text="Université – Système d'Aménagements"/>
+                <Label styleClass="header-sous-titre" text="Gestion des demandes pour étudiants en situation de handicap"/>
+            </VBox>
+        </HBox>
+    </top>
+
+    <!-- Contenu -->
+    <center>
+        <HBox>
+            <!-- Panneau gauche illustratif — GAP 2 FIX: styleClass replaces hardcoded #2A5298 -->
+            <VBox prefWidth="420" styleClass="login-panneau-gauche" alignment="CENTER" spacing="20">
+                <padding><Insets topRightBottomLeft="50"/></padding>
+                <Label text="🎓" style="-fx-font-size: 60px;"/>
+                <Label text="Bienvenue"
+                       style="-fx-text-fill: white; -fx-font-size: 28px; -fx-font-weight: bold;"/>
+                <Label text="Accédez à votre espace personnel pour gérer vos demandes d'aménagement et suivre leur traitement."
+                       styleClass="login-panneau-sous-titre"
+                       wrapText="true" textAlignment="CENTER"/>
+
+                <!-- Bouton connexion vocale — GAP 1+2: always visible, styled via CSS -->
+                <VBox alignment="CENTER" spacing="8" style="-fx-padding: 20 0 0 0;">
+                    <Button fx:id="boutonVocal"
+                            text="🎤  Connexion vocale"
+                            onAction="#handleConnexionVocale"
+                            maxWidth="Infinity"
+                            styleClass="bouton-vocal-login"/>
+                    <Label text="Parlez pour vous identifier sans clavier"
+                           style="-fx-text-fill: #A8C4E8; -fx-font-size: 11px;"
+                           wrapText="true" textAlignment="CENTER"/>
+                </VBox>
+            </VBox>
+
+            <!-- Formulaire de connexion -->
+            <VBox prefWidth="480" alignment="CENTER" spacing="18">
+                <padding><Insets topRightBottomLeft="50"/></padding>
+
+                <Label styleClass="label-titre" text="Connexion"/>
+
+                <VBox spacing="8">
+                    <Label text="Adresse e-mail"/>
+                    <TextField fx:id="champEmail" promptText="exemple@universite.fr"
+                               onKeyPressed="#handleToucheEntree"/>
+                </VBox>
+
+                <VBox spacing="8">
+                    <Label text="Mot de passe"/>
+                    <PasswordField fx:id="champMotDePasse" promptText="••••••••"
+                                  onKeyPressed="#handleToucheEntree"/>
+                </VBox>
+
+                <!-- État vocal (feedback temps réel) -->
+                <Label fx:id="labelEtatVocal"
+                       style="-fx-text-fill: #1A6E3C; -fx-font-size: 12px; -fx-font-style: italic;"
+                       wrapText="true" visible="false"/>
+
+                <Label fx:id="labelErreur" styleClass="label-erreur" text=""
+                       visible="false" wrapText="true"/>
+
+                <Button fx:id="boutonConnexion" text="Se connecter"
+                        onAction="#handleConnexion" maxWidth="Infinity"/>
+
+                <ProgressIndicator fx:id="indicateurChargement" visible="false"
+                                   prefWidth="30" prefHeight="30"/>
+
+                <Separator/>
+                <Label text="Première connexion ? Contactez l'administration."
+                       style="-fx-text-fill: #6C757D; -fx-font-size: 12px;"
+                       wrapText="true" textAlignment="CENTER"/>
+            </VBox>
+        </HBox>
+    </center>
+</BorderPane>

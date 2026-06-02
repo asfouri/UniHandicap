@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.universite.controller.ReclamationController"
+            prefWidth="1100" prefHeight="720"
+            style="-fx-background-color: #F5F7FA;">
+
+    <top>
+        <HBox styleClass="header-bar" alignment="CENTER_LEFT" spacing="15">
+            <padding><Insets topRightBottomLeft="15"/></padding>
+            <Button text="← Retour" onAction="#handleRetour"
+                    style="-fx-background-color: transparent; -fx-text-fill: white;"/>
+            <Label text="📣 Mes Réclamations" styleClass="header-titre"/>
+        </HBox>
+    </top>
+
+    <center>
+        <HBox spacing="0">
+
+            <!-- Formulaire soumission -->
+            <VBox prefWidth="400" spacing="18"
+                  style="-fx-background-color: white; -fx-padding: 30;
+                         -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.06),8,0,0,0);">
+
+                <Label text="Nouvelle réclamation" styleClass="label-titre"
+                       style="-fx-font-size: 18px;"/>
+                <VBox spacing="6">
+                    <Label text="Document justificatif (facultatif)"/>
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Button text="📎  Joindre un fichier"
+                                onAction="#handleJoindreDocument"
+                                style="-fx-background-color: #6C757D; -fx-text-fill: white;
+                                       -fx-background-radius: 6; -fx-padding: 7 15;"/>
+                        <Label fx:id="labelDocument" text="Aucun fichier sélectionné"
+                               style="-fx-text-fill: #6C757D;" wrapText="true"/>
+                    </HBox>
+                </VBox>
+
+                <Separator/>
+
+                <VBox spacing="6">
+                    <Label text="Sujet *"/>
+                    <TextField fx:id="champSujet" promptText="Résumez votre réclamation en quelques mots"/>
+                </VBox>
+
+                <VBox spacing="6">
+                    <Label text="Description détaillée *"/>
+                    <TextArea fx:id="champDescription"
+                              promptText="Décrivez précisément le problème rencontré..."
+                              prefRowCount="7" wrapText="true"/>
+                </VBox>
+
+                <!-- Saisie vocale -->
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Button fx:id="boutonVocal" text="🎤  Saisie vocale"
+                            onAction="#handleSaisieVocale"
+                            style="-fx-background-color: #17A2B8; -fx-text-fill: white;
+                                   -fx-background-radius: 6; -fx-padding: 7 15;"/>
+                    <Label fx:id="labelEtatVocal" text="" style="-fx-text-fill: #17A2B8; -fx-font-size: 11px;"/>
+                </HBox>
+                <!-- GAP 3 FIX: full voice workflow fills champSujet + champDescription -->
+                <Button fx:id="boutonVocalComplet"
+                        text="🗣  Formulaire vocal complet (sujet + description)"
+                        onAction="#handleSaisieVocaleComplete"
+                        maxWidth="Infinity"
+                        style="-fx-background-color: #6F42C1; -fx-text-fill: white;
+                               -fx-background-radius: 6; -fx-padding: 8 15; -fx-font-size: 12px;"/>
+
+                <Separator/>
+                <Label fx:id="labelConfirmation" text="" wrapText="true" visible="false"/>
+
+                <Button fx:id="boutonSoumettre" text="📤  Soumettre la réclamation"
+                        onAction="#handleSoumettre"
+                        styleClass="bouton-succes" maxWidth="Infinity"
+                        prefHeight="42"/>
+                <Button fx:id="boutonAnnulerEdition" text="Annuler la modification"
+                        onAction="#handleAnnulerEdition"
+                        styleClass="bouton-secondaire" maxWidth="Infinity"
+                        visible="false" managed="false"/>
+            </VBox>
+
+            <!-- Historique réclamations -->
+            <VBox HBox.hgrow="ALWAYS" spacing="15" style="-fx-padding: 30;">
+
+                <HBox alignment="CENTER_LEFT" spacing="15">
+                    <Label text="Historique de mes réclamations" styleClass="label-section"
+                           HBox.hgrow="ALWAYS"/>
+                    <Button text="Modifier" onAction="#handleModifier"
+                            styleClass="bouton-secondaire"/>
+                    <Button text="🗑  Supprimer" onAction="#handleSupprimer"
+                            styleClass="bouton-danger"/>
+                </HBox>
+
+                <TableView fx:id="tableauReclamations" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colSujet"   text="Sujet"    prefWidth="200"/>
+                        <TableColumn fx:id="colStatut"  text="Statut"   prefWidth="120"/>
+                        <TableColumn fx:id="colDate"    text="Date"     prefWidth="110"/>
+                        <TableColumn fx:id="colReponse" text="Réponse admin" prefWidth="250"/>
+                    </columns>
+                    <placeholder>
+                        <Label text="Aucune réclamation soumise pour le moment."
+                               style="-fx-text-fill: #6C757D;"/>
+                    </placeholder>
+                </TableView>
+
+                <!-- Légende -->
+                <HBox spacing="20" alignment="CENTER_LEFT">
+                    <HBox spacing="6" alignment="CENTER_LEFT">
+                        <Pane style="-fx-background-color: #fff3cd; -fx-min-width: 16; -fx-min-height: 16; -fx-background-radius: 3;"/>
+                        <Label text="En attente" style="-fx-font-size: 11px; -fx-text-fill: #6C757D;"/>
+                    </HBox>
+                    <HBox spacing="6" alignment="CENTER_LEFT">
+                        <Pane style="-fx-background-color: #d1ecf1; -fx-min-width: 16; -fx-min-height: 16; -fx-background-radius: 3;"/>
+                        <Label text="En cours" style="-fx-font-size: 11px; -fx-text-fill: #6C757D;"/>
+                    </HBox>
+                    <HBox spacing="6" alignment="CENTER_LEFT">
+                        <Pane style="-fx-background-color: #d4edda; -fx-min-width: 16; -fx-min-height: 16; -fx-background-radius: 3;"/>
+                        <Label text="Résolue" style="-fx-font-size: 11px; -fx-text-fill: #6C757D;"/>
+                    </HBox>
+                </HBox>
+            </VBox>
+        </HBox>
+    </center>
+</BorderPane>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.universite.controller.AdminDashboardController"
+            prefWidth="1200" prefHeight="750"
+            style="-fx-background-color: #F5F7FA;">
+
+    <!-- Barre latérale -->
+    <left>
+        <VBox styleClass="sidebar" prefWidth="220" spacing="5">
+            <padding><Insets top="20"/></padding>
+
+            <VBox style="-fx-padding: 0 20 20 20;">
+                <Label text="🏛 Administration" styleClass="header-titre"
+                       style="-fx-font-size: 16px;"/>
+                <Label fx:id="labelAdmin" text="Connecté : ..."
+                       style="-fx-text-fill: #A8C4E8; -fx-font-size: 11px;"/>
+            </VBox>
+
+            <Separator style="-fx-background-color: rgba(255,255,255,0.2);"/>
+
+            <Button text="📊  Tableau de bord"   styleClass="sidebar-item,sidebar-item-actif"
+                    onAction="#handleVoirTableauDeBord" maxWidth="Infinity"/>
+            <Button text="📋  Demandes"           styleClass="sidebar-item"
+                    onAction="#handleVoirDemandes" maxWidth="Infinity"/>
+            <Button text="📣  Réclamations"       styleClass="sidebar-item"
+                    onAction="#handleVoirReclamations" maxWidth="Infinity"/>
+            <Button text="📁  Archives"           styleClass="sidebar-item"
+                    onAction="#handleVoirArchives" maxWidth="Infinity"/>
+
+            <Pane VBox.vgrow="ALWAYS"/>
+            <Separator style="-fx-background-color: rgba(255,255,255,0.2);"/>
+            <Button text="🚪  Déconnexion"        styleClass="sidebar-item"
+                    onAction="#handleDeconnexion" maxWidth="Infinity"/>
+            <padding><Insets bottom="15"/></padding>
+        </VBox>
+    </left>
+
+    <!-- Contenu principal -->
+    <center>
+        <ScrollPane fx:id="scrollPane" fitToWidth="true" style="-fx-background-color: transparent;">
+            <VBox spacing="25">
+                <padding><Insets topRightBottomLeft="30"/></padding>
+
+                <!-- Titre -->
+                <Label text="Tableau de bord" styleClass="label-titre"/>
+                <Label text="Vue d'ensemble de l'activité du système"
+                       style="-fx-text-fill: #6C757D;"/>
+
+                <!-- KPI Cards -->
+                <HBox spacing="20">
+                    <VBox styleClass="carte-kpi,carte-attente" HBox.hgrow="ALWAYS">
+                        <Label fx:id="labelEnAttente" text="0" styleClass="kpi-nombre"/>
+                        <Label text="En attente" styleClass="kpi-label"/>
+                    </VBox>
+                    <VBox styleClass="carte-kpi,carte-acceptee" HBox.hgrow="ALWAYS">
+                        <Label fx:id="labelAcceptees" text="0" styleClass="kpi-nombre"/>
+                        <Label text="Acceptées" styleClass="kpi-label"/>
+                    </VBox>
+                    <VBox styleClass="carte-kpi,carte-refusee" HBox.hgrow="ALWAYS">
+                        <Label fx:id="labelRefusees" text="0" styleClass="kpi-nombre"/>
+                        <Label text="Refusées" styleClass="kpi-label"/>
+                    </VBox>
+                    <VBox styleClass="carte-kpi,carte-reclamation" HBox.hgrow="ALWAYS">
+                        <Label fx:id="labelTotalReclamations" text="0" styleClass="kpi-nombre"/>
+                        <Label text="Réclamations" styleClass="kpi-label"/>
+                    </VBox>
+                    <VBox styleClass="carte-kpi" HBox.hgrow="ALWAYS">
+                        <Label fx:id="labelTotalDemandes" text="0" styleClass="kpi-nombre"/>
+                        <Label text="Total demandes" styleClass="kpi-label"/>
+                    </VBox>
+                </HBox>
+
+                <Separator/>
+
+                <!-- Filtres -->
+                <VBox style="-fx-background-color: white; -fx-background-radius: 8;
+                             -fx-padding: 15; -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.06),8,0,0,2);"
+                      spacing="10">
+                    <Label text="Filtres" styleClass="label-section"/>
+                    <HBox spacing="12" alignment="CENTER_LEFT">
+                        <Label text="Statut :"/>
+                        <ComboBox fx:id="comboFiltreStatut" prefWidth="150"/>
+                        <Label text="Type :"/>
+                        <ComboBox fx:id="comboFiltreType" prefWidth="190"/>
+                        <Label text="Du :"/>
+                        <DatePicker fx:id="dateDu"/>
+                        <Label text="Au :"/>
+                        <DatePicker fx:id="dateAu"/>
+                        <Label text="Mot-clé :"/>
+                        <TextField fx:id="champMotCle" promptText="étudiant, description..." prefWidth="220"/>
+                        <Button text="Rechercher" onAction="#handleAppliquerFiltres"/>
+                        <Button text="Réinitialiser" onAction="#handleReinitialiserFiltres" styleClass="bouton-secondaire"/>
+                    </HBox>
+                </VBox>
+
+                <!-- Graphiques -->
+                <HBox spacing="20">
+                    <VBox styleClass="carte-kpi" HBox.hgrow="ALWAYS">
+                        <Label text="Répartition par statut" styleClass="label-section"/>
+                        <PieChart fx:id="chartStatuts" prefHeight="230" legendVisible="true"/>
+                    </VBox>
+                    <VBox styleClass="carte-kpi" HBox.hgrow="ALWAYS">
+                        <Label text="Demandes par type" styleClass="label-section"/>
+                        <BarChart fx:id="chartTypes" prefHeight="230">
+                            <xAxis>
+                                <CategoryAxis label="Type"/>
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis label="Nombre"/>
+                            </yAxis>
+                        </BarChart>
+                    </VBox>
+                </HBox>
+
+                <!-- Tableau des demandes -->
+                <Label text="Demandes d'aménagement" styleClass="label-section"/>
+
+                <TableView fx:id="tableauDemandes" prefHeight="280">
+                    <columns>
+                        <TableColumn fx:id="colNomEtudiant" text="Étudiant"     prefWidth="200"/>
+                        <TableColumn fx:id="colType"        text="Type"          prefWidth="200"/>
+                        <TableColumn fx:id="colStatut"      text="Statut"        prefWidth="130"/>
+                        <TableColumn fx:id="colDate"        text="Date"          prefWidth="120"/>
+                        <TableColumn fx:id="colDocument"    text="Document"      prefWidth="160"/>
+                    </columns>
+                </TableView>
+
+                <!-- Panneau de traitement -->
+                <VBox style="-fx-background-color: white; -fx-background-radius: 8;
+                             -fx-padding: 20; -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.08),8,0,0,2);"
+                      spacing="12">
+                    <Label text="Traiter la demande sélectionnée" styleClass="label-section"/>
+                    <HBox spacing="15" alignment="CENTER_LEFT">
+                        <VBox spacing="5" HBox.hgrow="ALWAYS">
+                            <Label text="Nouveau statut"/>
+                            <ComboBox fx:id="comboNouveauStatut" maxWidth="Infinity"/>
+                        </VBox>
+                        <VBox spacing="5" HBox.hgrow="ALWAYS">
+                            <Label text="Commentaire administrateur"/>
+                            <TextArea fx:id="champCommentaire" prefRowCount="3"
+                                      promptText="Saisir un commentaire (facultatif)..."/>
+                        </VBox>
+                    </HBox>
+                    <Button fx:id="boutonMettreAJour" text="✅  Mettre à jour le statut"
+                            onAction="#handleMettreAJour" styleClass="bouton-succes"/>
+                    <Button text="Ouvrir le fichier joint"
+                            onAction="#handleOuvrirDocumentDemande"
+                            styleClass="bouton-secondaire"/>
+                    <Button text="Archiver la demande traitée"
+                            onAction="#handleArchiverDemande"
+                            styleClass="bouton-secondaire"/>
+                </VBox>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>

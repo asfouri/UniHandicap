@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+
+    <action>
+        <actionName>run</actionName>
+        <packagings>
+            <packaging>jar</packaging>
+        </packagings>
+        <goals>
+            <goal>process-classes</goal>
+            <goal>org.openjfx:javafx-maven-plugin:0.0.8:run</goal>
+        </goals>
+        <properties>
+            <exec.vmArgs></exec.vmArgs>
+        </properties>
+    </action>
+
+    <action>
+        <actionName>debug</actionName>
+        <packagings>
+            <packaging>jar</packaging>
+        </packagings>
+        <goals>
+            <goal>process-classes</goal>
+            <goal>org.openjfx:javafx-maven-plugin:0.0.8:run</goal>
+        </goals>
+        <properties>
+            <exec.vmArgs></exec.vmArgs>
+            <javafx.options>-agentlib:jdwp=transport=dt_socket,server=n,address=${jpda.address}</javafx.options>
+        </properties>
+    </action>
+
+</actions>

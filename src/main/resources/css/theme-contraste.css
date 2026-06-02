@@ -1,0 +1,139 @@
+/* ============================================================
+   theme-contraste.css – Thème haut contraste (vision réduite)
+   Règle client : fond BLANC conservé, éléments bleus remplacés
+   par un bleu très foncé / presque noir pour contraste maximal.
+   ============================================================ */
+
+.root {
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-font-size: 15px;
+    -fx-background-color: #FFFFFF;   /* fond blanc conservé */
+}
+
+/* ── En-tête ── */
+.header-bar    { -fx-background-color: #0A0A0A; }
+.header-titre  { -fx-text-fill: #FFFFFF; -fx-font-size: 21px; -fx-font-weight: bold; }
+.header-sous-titre { -fx-text-fill: #CCCCCC; -fx-font-size: 13px; }
+
+/* ── Boutons ── */
+.button {
+    -fx-background-color: #0A0A0A;
+    -fx-text-fill: white;
+    -fx-background-radius: 6;
+    -fx-padding: 9 22;
+    -fx-cursor: hand;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+.button:hover   { -fx-background-color: #333333; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.35), 6, 0, 0, 2); }
+.button:pressed { -fx-background-color: #000000; }
+
+.bouton-succes  { -fx-background-color: #006400; }
+.bouton-succes:hover { -fx-background-color: #004d00; }
+.bouton-danger  { -fx-background-color: #8B0000; }
+.bouton-danger:hover  { -fx-background-color: #6B0000; }
+.bouton-secondaire { -fx-background-color: #444444; }
+
+.bouton-reponse {
+    -fx-background-color: white;
+    -fx-text-fill: #0A0A0A;
+    -fx-border-color: #0A0A0A;
+    -fx-border-width: 2;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 8 16;
+    -fx-cursor: hand;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+.bouton-reponse:hover { -fx-background-color: #0A0A0A; -fx-text-fill: white; }
+
+/* ── Champs ── */
+.text-field, .password-field, .text-area, .combo-box {
+    -fx-background-color: white;
+    -fx-border-color: #0A0A0A;
+    -fx-border-width: 2;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 8 12;
+    -fx-font-size: 14px;
+}
+.text-field:focused, .password-field:focused, .text-area:focused {
+    -fx-border-color: #333333;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 4, 0, 0, 0);
+}
+
+/* ── Labels ── */
+.label          { -fx-text-fill: #111111; }
+.label-titre    { -fx-font-size: 23px; -fx-font-weight: bold; -fx-text-fill: #0A0A0A; }
+.label-section  { -fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #222222; }
+.label-erreur   { -fx-text-fill: #8B0000; -fx-font-size: 13px; -fx-font-weight: bold; }
+.label-succes   { -fx-text-fill: #006400; -fx-font-size: 13px; -fx-font-weight: bold; }
+
+/* ── KPI Cards ── */
+.carte-kpi {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-padding: 20;
+    -fx-border-color: #0A0A0A;
+    -fx-border-width: 1.5;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 8, 0, 0, 2);
+}
+.kpi-nombre { -fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: #0A0A0A; }
+.kpi-label  { -fx-font-size: 13px; -fx-text-fill: #444444; }
+
+.carte-attente    { -fx-border-left-width: 4; -fx-border-color: #B8860B; }
+.carte-acceptee   { -fx-border-left-width: 4; -fx-border-color: #006400; }
+.carte-refusee    { -fx-border-left-width: 4; -fx-border-color: #8B0000; }
+.carte-reclamation { -fx-border-left-width: 4; -fx-border-color: #006080; }
+
+/* ── Tableau ── */
+.table-view { -fx-background-color: white; -fx-border-color: #0A0A0A; -fx-border-radius: 5; }
+.table-view .column-header { -fx-background-color: #0A0A0A; }
+.table-view .column-header .label { -fx-text-fill: white; -fx-font-weight: bold; }
+.table-row-cell:selected { -fx-background-color: #CCCCCC; }
+
+/* ── Sidebar ── */
+.sidebar { -fx-background-color: #0A0A0A; -fx-padding: 20 0; }
+.sidebar-item {
+    -fx-background-color: transparent;
+    -fx-text-fill: #CCCCCC;
+    -fx-font-size: 14px;
+    -fx-padding: 12 25;
+    -fx-cursor: hand;
+    -fx-alignment: CENTER_LEFT;
+}
+.sidebar-item:hover { -fx-background-color: rgba(255,255,255,0.12); -fx-text-fill: white; }
+.sidebar-item-actif { -fx-background-color: rgba(255,255,255,0.18); -fx-text-fill: white; -fx-font-weight: bold; }
+
+/* ── Zone test couleur ── */
+.zone-test-couleur {
+    -fx-background-color: white;
+    -fx-background-radius: 15;
+    -fx-border-color: #0A0A0A;
+    -fx-border-width: 2;
+    -fx-padding: 40;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 20, 0, 0, 5);
+}
+
+/* ── Progress & Scroll ── */
+.progress-indicator { -fx-accent: #0A0A0A; }
+.scroll-pane { -fx-background-color: transparent; -fx-background: transparent; }
+.scroll-pane > .viewport { -fx-background-color: transparent; }
+
+/* ── GAP 2 FIX: Login left panel ───── */
+.login-panneau-gauche      { -fx-background-color: #0A0A0A; }
+.login-panneau-sous-titre  { -fx-text-fill: #CCCCCC; -fx-font-size: 13px; }
+.bouton-vocal-login {
+    -fx-background-color: #FFD700;
+    -fx-text-fill: #0A0A0A;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 12 20;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+
+/* ── GAP 2 FIX: Dashboard welcome banner ─ */
+.dashboard-banniere-accueil    { -fx-background-color: #0A0A0A; }
+.dashboard-banniere-sous-titre { -fx-text-fill: #CCCCCC; -fx-font-size: 13px; }

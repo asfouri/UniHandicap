@@ -1,0 +1,235 @@
+/* ============================================================
+   style.css – Feuille de style principale (thème standard)
+   Application : Système de Gestion des Aménagements
+   ============================================================ */
+
+/* ── Racine et variables ────────────────────────────────────── */
+.root {
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-font-size: 14px;
+    -fx-background-color: #F5F7FA;
+}
+
+/* ── Barre de navigation / En-tête ─────────────────────────── */
+.header-bar {
+    -fx-background-color: #1A3C6E;
+    -fx-padding: 15 20;
+}
+
+.header-titre {
+    -fx-text-fill: white;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.header-sous-titre {
+    -fx-text-fill: #A8C4E8;
+    -fx-font-size: 13px;
+}
+
+/* ── Boutons ─────────────────────────────────────────────────── */
+.button {
+    -fx-background-color: #1A3C6E;
+    -fx-text-fill: white;
+    -fx-background-radius: 6;
+    -fx-padding: 8 20;
+    -fx-cursor: hand;
+    -fx-font-size: 13px;
+}
+
+.button:hover {
+    -fx-background-color: #2A5298;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 6, 0, 0, 2);
+}
+
+.button:pressed {
+    -fx-background-color: #122B50;
+}
+
+.bouton-succes {
+    -fx-background-color: #28A745;
+}
+
+.bouton-succes:hover {
+    -fx-background-color: #218838;
+}
+
+.bouton-danger {
+    -fx-background-color: #DC3545;
+}
+
+.bouton-danger:hover {
+    -fx-background-color: #C82333;
+}
+
+.bouton-secondaire {
+    -fx-background-color: #6C757D;
+}
+
+.bouton-reponse {
+    -fx-background-color: white;
+    -fx-text-fill: #1A3C6E;
+    -fx-border-color: #1A3C6E;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 8 16;
+    -fx-cursor: hand;
+    -fx-font-size: 13px;
+}
+
+.bouton-reponse:hover {
+    -fx-background-color: #1A3C6E;
+    -fx-text-fill: white;
+}
+
+/* ── Champs de formulaire ────────────────────────────────────── */
+.text-field, .password-field, .text-area, .combo-box {
+    -fx-background-color: white;
+    -fx-border-color: #CED4DA;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 8 12;
+    -fx-font-size: 13px;
+}
+
+.text-field:focused, .password-field:focused, .text-area:focused {
+    -fx-border-color: #1A3C6E;
+    -fx-effect: dropshadow(gaussian, rgba(26,60,110,0.2), 4, 0, 0, 0);
+}
+
+/* ── Labels ──────────────────────────────────────────────────── */
+.label {
+    -fx-text-fill: #343A40;
+}
+
+.label-titre {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1A3C6E;
+}
+
+.label-section {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2A5298;
+}
+
+.label-erreur {
+    -fx-text-fill: #DC3545;
+    -fx-font-size: 12px;
+}
+
+.label-succes {
+    -fx-text-fill: #28A745;
+    -fx-font-size: 12px;
+}
+
+/* ── KPI Cards (Dashboard) ───────────────────────────────────── */
+.carte-kpi {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-padding: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 2);
+}
+
+.kpi-nombre {
+    -fx-font-size: 36px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1A3C6E;
+}
+
+.kpi-label {
+    -fx-font-size: 13px;
+    -fx-text-fill: #6C757D;
+}
+
+.carte-attente    { -fx-border-left-width: 4; -fx-border-color: #FFC107; }
+.carte-acceptee   { -fx-border-left-width: 4; -fx-border-color: #28A745; }
+.carte-refusee    { -fx-border-left-width: 4; -fx-border-color: #DC3545; }
+.carte-reclamation { -fx-border-left-width: 4; -fx-border-color: #17A2B8; }
+
+/* ── Tableau ─────────────────────────────────────────────────── */
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #DEE2E6;
+    -fx-border-radius: 5;
+}
+
+.table-view .column-header {
+    -fx-background-color: #1A3C6E;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #A8C4E8;
+}
+
+/* ── Barre latérale (Sidebar) ────────────────────────────────── */
+.sidebar {
+    -fx-background-color: #1A3C6E;
+    -fx-padding: 20 0;
+}
+
+.sidebar-item {
+    -fx-background-color: transparent;
+    -fx-text-fill: #A8C4E8;
+    -fx-font-size: 14px;
+    -fx-padding: 12 25;
+    -fx-cursor: hand;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.sidebar-item:hover {
+    -fx-background-color: rgba(255,255,255,0.1);
+    -fx-text-fill: white;
+}
+
+.sidebar-item-actif {
+    -fx-background-color: rgba(255,255,255,0.15);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+/* ── Zone de test couleur ────────────────────────────────────── */
+.zone-test-couleur {
+    -fx-background-color: white;
+    -fx-background-radius: 15;
+    -fx-padding: 40;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 20, 0, 0, 5);
+}
+
+/* ── Indicateur de progression ───────────────────────────────── */
+.progress-indicator {
+    -fx-accent: #1A3C6E;
+}
+
+/* ── ScrollPane ──────────────────────────────────────────────── */
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+/* ── GAP 2 FIX: Login left panel (replaces hardcoded #2A5298 in FXML) ──────── */
+.login-panneau-gauche      { -fx-background-color: #2A5298; }
+.login-panneau-sous-titre  { -fx-text-fill: #A8C4E8; -fx-font-size: 13px; }
+.bouton-vocal-login {
+    -fx-background-color: #FFD700;
+    -fx-text-fill: #1A3C6E;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 12 20;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+
+/* ── GAP 2 FIX: Dashboard welcome banner (replaces hardcoded #1A3C6E in FXML) ─ */
+.dashboard-banniere-accueil    { -fx-background-color: #1A3C6E; }
+.dashboard-banniere-sous-titre { -fx-text-fill: #A8C4E8; -fx-font-size: 13px; }

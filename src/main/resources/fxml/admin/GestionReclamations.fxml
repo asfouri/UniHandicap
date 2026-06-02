@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.String?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.universite.controller.AdminReclamationController"
+            prefWidth="1200" prefHeight="750"
+            style="-fx-background-color: #F5F7FA;">
+
+    <top>
+        <HBox styleClass="header-bar" alignment="CENTER_LEFT" spacing="15">
+            <padding><Insets topRightBottomLeft="15"/></padding>
+            <Button text="← Tableau de bord" onAction="#handleRetour"
+                    style="-fx-background-color: transparent; -fx-text-fill: white;"/>
+            <Label text="📣 Gestion des Réclamations" styleClass="header-titre"/>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="20">
+            <padding><Insets topRightBottomLeft="30"/></padding>
+
+            <!-- Filtres -->
+            <HBox spacing="15" alignment="CENTER_LEFT">
+                <Label text="Filtrer par statut :"/>
+                <ComboBox fx:id="comboFiltreStatut" promptText="Tous les statuts">
+                    <items>
+                        <javafx.collections.FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Tous"/>
+                            <String fx:value="EN_ATTENTE"/>
+                            <String fx:value="EN_COURS"/>
+                            <String fx:value="RESOLUE"/>
+                        </javafx.collections.FXCollections>
+                    </items>
+                </ComboBox>
+                <Button text="🔄 Actualiser" onAction="#handleActualiser"/>
+            </HBox>
+
+            <!-- Tableau -->
+            <TableView fx:id="tableauReclamations" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colEtudiant"  text="Étudiant"    prefWidth="180"/>
+                    <TableColumn fx:id="colSujet"     text="Sujet"       prefWidth="200"/>
+                    <TableColumn fx:id="colStatut"    text="Statut"      prefWidth="120"/>
+                    <TableColumn fx:id="colDate"      text="Date"        prefWidth="110"/>
+                    <TableColumn fx:id="colDocument"  text="Document"    prefWidth="160"/>
+                    <TableColumn fx:id="colDesc"      text="Description" prefWidth="280"/>
+                </columns>
+                <placeholder>
+                    <Label text="Aucune réclamation trouvée." style="-fx-text-fill: #6C757D;"/>
+                </placeholder>
+            </TableView>
+
+            <!-- Panneau traitement -->
+            <VBox style="-fx-background-color: white; -fx-background-radius: 8;
+                         -fx-padding: 20; -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.08),8,0,0,2);"
+                  spacing="12">
+                <Label text="Traiter la réclamation sélectionnée" styleClass="label-section"/>
+                <HBox spacing="15">
+                    <VBox spacing="5" HBox.hgrow="ALWAYS">
+                        <Label text="Nouveau statut"/>
+                        <ComboBox fx:id="comboNouveauStatut" maxWidth="Infinity">
+                            <items>
+                                <javafx.collections.FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="EN_ATTENTE"/>
+                                    <String fx:value="EN_COURS"/>
+                                    <String fx:value="RESOLUE"/>
+                                </javafx.collections.FXCollections>
+                            </items>
+                        </ComboBox>
+                    </VBox>
+                    <VBox spacing="5" HBox.hgrow="ALWAYS">
+                        <Label text="Réponse à l'étudiant"/>
+                        <TextArea fx:id="champReponse" prefRowCount="3"
+                                  promptText="Saisir la réponse..."/>
+                    </VBox>
+                </HBox>
+                <Button fx:id="boutonMettreAJour" text="✅  Mettre à jour"
+                        onAction="#handleMettreAJour" styleClass="bouton-succes"/>
+                <Button text="Ouvrir le fichier joint"
+                        onAction="#handleOuvrirDocument"
+                        styleClass="bouton-secondaire"/>
+                <Button text="Archiver la réclamation résolue"
+                        onAction="#handleArchiverReclamation"
+                        styleClass="bouton-secondaire"/>
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>

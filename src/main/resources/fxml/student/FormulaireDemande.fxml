@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.universite.controller.DemandeController"
+            prefWidth="1100" prefHeight="720"
+            style="-fx-background-color: #F5F7FA;">
+
+    <top>
+        <HBox styleClass="header-bar" alignment="CENTER_LEFT" spacing="15">
+            <padding><Insets topRightBottomLeft="15"/></padding>
+            <Button text="← Retour" onAction="#handleRetour"
+                    style="-fx-background-color: transparent; -fx-text-fill: white;"/>
+            <Label text="📋 Mes Demandes d'Aménagement" styleClass="header-titre"/>
+        </HBox>
+    </top>
+
+    <center>
+        <HBox spacing="0">
+
+            <!-- Formulaire de soumission -->
+            <VBox prefWidth="420" spacing="18"
+                  style="-fx-background-color: white; -fx-padding: 30;
+                         -fx-effect: dropshadow(gaussian,rgba(0,0,0,0.06),8,0,0,0);">
+
+                <Label text="Nouvelle demande" styleClass="label-titre"
+                       style="-fx-font-size: 18px;"/>
+                <Separator/>
+
+                <VBox spacing="6">
+                    <Label text="Type d'aménagement *"/>
+                    <ComboBox fx:id="comboType" maxWidth="Infinity"
+                              promptText="Sélectionner un type..."/>
+                </VBox>
+
+                <VBox spacing="6">
+                    <Label text="Description de votre besoin *"/>
+                    <TextArea fx:id="champDescription"
+                              promptText="Décrivez votre situation et le besoin d'aménagement..."
+                              prefRowCount="6" wrapText="true"/>
+                    <Label text="💡 Vous pouvez aussi utiliser la saisie vocale →"
+                           style="-fx-text-fill: #6C757D; -fx-font-size: 11px;"/>
+                </VBox>
+
+                <!-- Saisie vocale -->
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Button fx:id="boutonVocal" text="🎤  Saisie vocale"
+                            onAction="#handleSaisieVocale"
+                            style="-fx-background-color: #17A2B8; -fx-text-fill: white;
+                                   -fx-background-radius: 6; -fx-padding: 7 15;"/>
+                    <Label fx:id="labelEtatVocal" text="" style="-fx-text-fill: #17A2B8; -fx-font-size: 11px;"/>
+                </HBox>
+                <!-- GAP 3 FIX: full voice workflow fills comboType + description -->
+                <Button fx:id="boutonVocalComplet"
+                        text="🗣  Formulaire vocal complet (type + description)"
+                        onAction="#handleSaisieVocaleComplete"
+                        maxWidth="Infinity"
+                        style="-fx-background-color: #6F42C1; -fx-text-fill: white;
+                               -fx-background-radius: 6; -fx-padding: 8 15; -fx-font-size: 12px;"/>
+
+                <!-- Document joint -->
+                <VBox spacing="6">
+                    <Label text="Document justificatif (facultatif)"/>
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Button text="📎  Joindre un fichier" onAction="#handleJoindreDocument"
+                                styleClass="bouton-secondaire"/>
+                        <Label fx:id="labelDocument" text="Aucun fichier sélectionné"
+                               style="-fx-text-fill: #6C757D; -fx-font-size: 12px;"
+                               wrapText="true"/>
+                    </HBox>
+                </VBox>
+
+                <Separator/>
+
+                <Label fx:id="labelConfirmation" text="" wrapText="true" visible="false"/>
+
+                <Button fx:id="boutonSoumettre" text="✅  Soumettre la demande"
+                        onAction="#handleSoumettre"
+                        styleClass="bouton-succes" maxWidth="Infinity"
+                        prefHeight="42"/>
+                <Button fx:id="boutonAnnulerEdition" text="Annuler la modification"
+                        onAction="#handleAnnulerEdition"
+                        styleClass="bouton-secondaire" maxWidth="Infinity"
+                        visible="false" managed="false"/>
+            </VBox>
+
+            <!-- Tableau des demandes existantes -->
+            <VBox HBox.hgrow="ALWAYS" spacing="15" style="-fx-padding: 30;">
+
+                <HBox alignment="CENTER_LEFT" spacing="15">
+                    <Label text="Historique de mes demandes" styleClass="label-section"
+                           HBox.hgrow="ALWAYS"/>
+                    <Button text="Modifier" onAction="#handleModifier"
+                            styleClass="bouton-secondaire"/>
+                    <Button text="🗑  Supprimer" onAction="#handleSupprimer"
+                            styleClass="bouton-danger"/>
+                </HBox>
+
+                <TableView fx:id="tableauDemandes" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colonneType"        text="Type"          prefWidth="180"/>
+                        <TableColumn fx:id="colonneStatut"      text="Statut"        prefWidth="120"/>
+                        <TableColumn fx:id="colonneDate"        text="Date"          prefWidth="110"/>
+                        <TableColumn fx:id="colonneDescription" text="Description"   prefWidth="280"/>
+                    </columns>
+                    <placeholder>
+                        <Label text="Aucune demande soumise pour le moment."
+                               style="-fx-text-fill: #6C757D;"/>
+                    </placeholder>
+                </TableView>
+
+                <!-- Légende couleurs -->
+                <HBox spacing="20" alignment="CENTER_LEFT">
+                    <HBox spacing="6" alignment="CENTER_LEFT">
+                        <Pane style="-fx-background-color: #fff3cd; -fx-min-width: 16; -fx-min-height: 16; -fx-background-radius: 3;"/>
+                        <Label text="En attente" style="-fx-font-size: 11px; -fx-text-fill: #6C757D;"/>
+                    </HBox>
+                    <HBox spacing="6" alignment="CENTER_LEFT">
+                        <Pane style="-fx-background-color: #d4edda; -fx-min-width: 16; -fx-min-height: 16; -fx-background-radius: 3;"/>
+                        <Label text="Acceptée" style="-fx-font-size: 11px; -fx-text-fill: #6C757D;"/>
+                    </HBox>
+                    <HBox spacing="6" alignment="CENTER_LEFT">
+                        <Pane style="-fx-background-color: #f8d7da; -fx-min-width: 16; -fx-min-height: 16; -fx-background-radius: 3;"/>
+                        <Label text="Refusée" style="-fx-font-size: 11px; -fx-text-fill: #6C757D;"/>
+                    </HBox>
+                </HBox>
+            </VBox>
+        </HBox>
+    </center>
+</BorderPane>

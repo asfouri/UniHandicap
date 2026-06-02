@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.String?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.universite.controller.ArchivesController"
+            prefWidth="1200" prefHeight="750"
+            style="-fx-background-color: #F5F7FA;">
+
+    <top>
+        <HBox styleClass="header-bar" alignment="CENTER_LEFT" spacing="15">
+            <padding><Insets topRightBottomLeft="15"/></padding>
+            <Button text="← Tableau de bord" onAction="#handleRetour"
+                    style="-fx-background-color: transparent; -fx-text-fill: white;"/>
+            <Label text="📁 Archives" styleClass="header-titre"/>
+            <Pane HBox.hgrow="ALWAYS"/>
+            <Label fx:id="labelZoom" text="Zoom" style="-fx-text-fill: #A8C4E8;"/>
+            <Slider fx:id="sliderZoom" min="0.8" max="1.5" value="1.0" prefWidth="140"/>
+        </HBox>
+    </top>
+
+    <center>
+        <VBox spacing="20">
+            <padding><Insets topRightBottomLeft="30"/></padding>
+
+            <TabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE">
+                <tabs>
+                    <Tab text="Demandes">
+                        <content>
+                            <VBox spacing="15">
+                                <HBox spacing="10" alignment="CENTER_LEFT">
+                                    <Label text="Statut :"/>
+                                    <ComboBox fx:id="comboStatutDemande" prefWidth="160"/>
+                                    <Label text="Type :"/>
+                                    <ComboBox fx:id="comboTypeDemande" prefWidth="200"/>
+                                    <Label text="Du :"/>
+                                    <DatePicker fx:id="dateDuDemande"/>
+                                    <Label text="Au :"/>
+                                    <DatePicker fx:id="dateAuDemande"/>
+                                    <Label text="Mot-clé :"/>
+                                    <TextField fx:id="champMotCleDemande" promptText="description, commentaire..." prefWidth="220"/>
+                                    <Button text="Rechercher" onAction="#handleRechercherDemandes"/>
+                                </HBox>
+
+                                <TableView fx:id="tableDemandes" VBox.vgrow="ALWAYS">
+                                    <columns>
+                                        <TableColumn fx:id="colDemandeId" text="#" prefWidth="60"/>
+                                        <TableColumn fx:id="colDemandeEtudiant" text="Étudiant" prefWidth="200"/>
+                                        <TableColumn fx:id="colDemandeType" text="Type" prefWidth="200"/>
+                                        <TableColumn fx:id="colDemandeStatut" text="Statut" prefWidth="120"/>
+                                        <TableColumn fx:id="colDemandeDate" text="Soumise le" prefWidth="120"/>
+                                        <TableColumn fx:id="colDemandeDesc" text="Description" prefWidth="380"/>
+                                    </columns>
+                                    <placeholder>
+                                        <Label text="Aucune demande trouvée." style="-fx-text-fill: #6C757D;"/>
+                                    </placeholder>
+                                </TableView>
+                            </VBox>
+                        </content>
+                    </Tab>
+
+                    <Tab text="Réclamations">
+                        <content>
+                            <VBox spacing="15">
+                                <HBox spacing="10" alignment="CENTER_LEFT">
+                                    <Label text="Statut :"/>
+                                    <ComboBox fx:id="comboStatutReclamation" prefWidth="160"/>
+                                    <Label text="Du :"/>
+                                    <DatePicker fx:id="dateDuReclamation"/>
+                                    <Label text="Au :"/>
+                                    <DatePicker fx:id="dateAuReclamation"/>
+                                    <Label text="Mot-clé :"/>
+                                    <TextField fx:id="champMotCleReclamation" promptText="sujet, description, réponse..." prefWidth="260"/>
+                                    <Button text="Rechercher" onAction="#handleRechercherReclamations"/>
+                                </HBox>
+
+                                <TableView fx:id="tableReclamations" VBox.vgrow="ALWAYS">
+                                    <columns>
+                                        <TableColumn fx:id="colReclamationId" text="#" prefWidth="60"/>
+                                        <TableColumn fx:id="colReclamationEtudiant" text="Étudiant" prefWidth="200"/>
+                                        <TableColumn fx:id="colReclamationSujet" text="Sujet" prefWidth="220"/>
+                                        <TableColumn fx:id="colReclamationStatut" text="Statut" prefWidth="120"/>
+                                        <TableColumn fx:id="colReclamationDate" text="Soumise le" prefWidth="120"/>
+                                        <TableColumn fx:id="colReclamationDesc" text="Description" prefWidth="380"/>
+                                    </columns>
+                                    <placeholder>
+                                        <Label text="Aucune réclamation trouvée." style="-fx-text-fill: #6C757D;"/>
+                                    </placeholder>
+                                </TableView>
+                            </VBox>
+                        </content>
+                    </Tab>
+                </tabs>
+            </TabPane>
+        </VBox>
+    </center>
+</BorderPane>

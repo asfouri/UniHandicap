@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.universite.controller.EtudiantDashboardController"
+            prefWidth="1100" prefHeight="720"
+            style="-fx-background-color: #F5F7FA;">
+
+    <!-- Barre latérale -->
+    <left>
+        <VBox styleClass="sidebar" prefWidth="210" spacing="5">
+            <padding><Insets top="20"/></padding>
+
+            <VBox style="-fx-padding: 0 20 20 20;">
+                <Label text="🎓 Mon Espace" styleClass="header-titre"
+                       style="-fx-font-size: 16px;"/>
+                <Label fx:id="labelNomEtudiant" text="Étudiant"
+                       style="-fx-text-fill: #A8C4E8; -fx-font-size: 11px;"/>
+            </VBox>
+
+            <Separator style="-fx-background-color: rgba(255,255,255,0.2);"/>
+
+            <Button text="🏠  Accueil"              styleClass="sidebar-item,sidebar-item-actif" maxWidth="Infinity"/>
+            <Button text="📋  Mes demandes"          styleClass="sidebar-item"
+                    onAction="#handleVoirDemandes"   maxWidth="Infinity"/>
+            <Button text="📣  Mes réclamations"      styleClass="sidebar-item"
+                    onAction="#handleVoirReclamations" maxWidth="Infinity"/>
+            <Button text="🔔  Notifications"         styleClass="sidebar-item"
+                    onAction="#handleVoirNotifications" maxWidth="Infinity"/>
+
+            <Pane VBox.vgrow="ALWAYS"/>
+            <Separator style="-fx-background-color: rgba(255,255,255,0.2);"/>
+            <Button text="🚪  Déconnexion"           styleClass="sidebar-item"
+                    onAction="#handleDeconnexion"    maxWidth="Infinity"/>
+            <padding><Insets bottom="15"/></padding>
+        </VBox>
+    </left>
+
+    <!-- Contenu -->
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent;">
+            <VBox spacing="25">
+                <padding><Insets topRightBottomLeft="30"/></padding>
+
+                <!-- Accueil personnalisé — GAP 2 FIX: styleClass replaces hardcoded #1A3C6E -->
+                <VBox styleClass="dashboard-banniere-accueil"
+                      style="-fx-background-radius: 10; -fx-padding: 25;"
+                      spacing="8">
+                    <Label fx:id="labelBienvenue" text="Bonjour, Étudiant !"
+                           style="-fx-text-fill: white; -fx-font-size: 22px; -fx-font-weight: bold;"/>
+                    <Label text="Gérez vos demandes d'aménagement et suivez leur traitement en temps réel."
+                           styleClass="dashboard-banniere-sous-titre" wrapText="true"/>
+                </VBox>
+
+                <!-- Notifications non lues -->
+                <VBox fx:id="panneauNotifications"
+                      style="-fx-background-color: #FFF3CD; -fx-background-radius: 8;
+                             -fx-border-color: #FFC107; -fx-border-radius: 8; -fx-padding: 15;"
+                      spacing="5" visible="false" managed="false">
+                    <Label text="🔔 Vous avez des notifications non lues :"
+                           style="-fx-font-weight: bold; -fx-text-fill: #856404;"/>
+                    <ListView fx:id="listeNotifications" prefHeight="80"/>
+                </VBox>
+
+                <!-- Résumé des statuts -->
+                <HBox spacing="20">
+                    <VBox styleClass="carte-kpi,carte-attente" HBox.hgrow="ALWAYS">
+                        <Label fx:id="labelMesAttentes" text="0" styleClass="kpi-nombre"/>
+                        <Label text="En attente" styleClass="kpi-label"/>
+                    </VBox>
+                    <VBox styleClass="carte-kpi,carte-acceptee" HBox.hgrow="ALWAYS">
+                        <Label fx:id="labelMesAcceptees" text="0" styleClass="kpi-nombre"/>
+                        <Label text="Acceptées" styleClass="kpi-label"/>
+                    </VBox>
+                    <VBox styleClass="carte-kpi,carte-refusee" HBox.hgrow="ALWAYS">
+                        <Label fx:id="labelMesRefusees" text="0" styleClass="kpi-nombre"/>
+                        <Label text="Refusées" styleClass="kpi-label"/>
+                    </VBox>
+                    <VBox styleClass="carte-kpi,carte-reclamation" HBox.hgrow="ALWAYS">
+                        <Label fx:id="labelMesReclamations" text="0" styleClass="kpi-nombre"/>
+                        <Label text="Réclamations" styleClass="kpi-label"/>
+                    </VBox>
+                </HBox>
+
+                <!-- Actions rapides -->
+                <Label text="Actions rapides" styleClass="label-section"/>
+                <HBox spacing="15">
+                    <Button text="➕  Nouvelle demande"
+                            onAction="#handleNouvelleDemande"
+                            styleClass="bouton-succes"
+                            prefWidth="200" prefHeight="50"/>
+                    <Button text="📣  Soumettre une réclamation"
+                            onAction="#handleNouvelleReclamation"
+                            prefWidth="230" prefHeight="50"/>
+                    <Button text="📄  Exporter en PDF"
+                            onAction="#handleExporterPDF"
+                            styleClass="bouton-secondaire"
+                            prefWidth="180" prefHeight="50"/>
+                </HBox>
+
+                <!-- Dernières demandes -->
+                <Label text="Mes dernières demandes" styleClass="label-section"/>
+
+                <TableView fx:id="tableauDerniersDemandes" prefHeight="220">
+                    <columns>
+                        <TableColumn fx:id="colType"    text="Type"          prefWidth="200"/>
+                        <TableColumn fx:id="colStatut"  text="Statut"        prefWidth="130"/>
+                        <TableColumn fx:id="colDate"    text="Date"          prefWidth="120"/>
+                        <TableColumn fx:id="colDesc"    text="Description"   prefWidth="350"/>
+                    </columns>
+                </TableView>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>

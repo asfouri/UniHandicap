@@ -1,0 +1,132 @@
+/* ============================================================
+   theme-daltonien.css – Thème adapté deutéranopie / protanopie
+   Règle client : fond BLANC conservé, seuls les éléments bleus
+   (#1A3C6E) sont remplacés par une palette orange/ambre.
+   ============================================================ */
+
+.root {
+    -fx-font-family: "Segoe UI", Arial, sans-serif;
+    -fx-font-size: 14px;
+    -fx-background-color: #FFFFFF;   /* fond blanc conservé */
+}
+
+/* ── En-tête ── */
+.header-bar    { -fx-background-color: #B35A00; }   /* orange foncé remplace bleu marine */
+.header-titre  { -fx-text-fill: #FFFFFF; -fx-font-size: 20px; -fx-font-weight: bold; }
+.header-sous-titre { -fx-text-fill: #FFE0B2; -fx-font-size: 13px; }
+
+/* ── Boutons ── */
+.button {
+    -fx-background-color: #B35A00;
+    -fx-text-fill: white;
+    -fx-background-radius: 6;
+    -fx-padding: 8 20;
+    -fx-cursor: hand;
+    -fx-font-size: 13px;
+}
+.button:hover   { -fx-background-color: #E07000; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 6, 0, 0, 2); }
+.button:pressed { -fx-background-color: #7A3D00; }
+
+.bouton-succes  { -fx-background-color: #28A745; }
+.bouton-succes:hover { -fx-background-color: #218838; }
+.bouton-danger  { -fx-background-color: #DC3545; }
+.bouton-danger:hover  { -fx-background-color: #C82333; }
+.bouton-secondaire { -fx-background-color: #6C757D; }
+
+.bouton-reponse {
+    -fx-background-color: white;
+    -fx-text-fill: #B35A00;
+    -fx-border-color: #B35A00;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 8 16;
+    -fx-cursor: hand;
+    -fx-font-size: 13px;
+}
+.bouton-reponse:hover { -fx-background-color: #B35A00; -fx-text-fill: white; }
+
+/* ── Champs ── */
+.text-field, .password-field, .text-area, .combo-box {
+    -fx-background-color: white;
+    -fx-border-color: #B35A00;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 8 12;
+    -fx-font-size: 13px;
+}
+.text-field:focused, .password-field:focused, .text-area:focused {
+    -fx-border-color: #E07000;
+    -fx-effect: dropshadow(gaussian, rgba(179,90,0,0.2), 4, 0, 0, 0);
+}
+
+/* ── Labels ── */
+.label          { -fx-text-fill: #343A40; }
+.label-titre    { -fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #B35A00; }
+.label-section  { -fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #E07000; }
+.label-erreur   { -fx-text-fill: #DC3545; -fx-font-size: 12px; }
+.label-succes   { -fx-text-fill: #28A745; -fx-font-size: 12px; }
+
+/* ── KPI Cards ── */
+.carte-kpi {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-padding: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 2);
+}
+.kpi-nombre { -fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: #B35A00; }
+.kpi-label  { -fx-font-size: 13px; -fx-text-fill: #6C757D; }
+
+.carte-attente    { -fx-border-left-width: 4; -fx-border-color: #FFC107; }
+.carte-acceptee   { -fx-border-left-width: 4; -fx-border-color: #28A745; }
+.carte-refusee    { -fx-border-left-width: 4; -fx-border-color: #DC3545; }
+.carte-reclamation { -fx-border-left-width: 4; -fx-border-color: #17A2B8; }
+
+/* ── Tableau ── */
+.table-view { -fx-background-color: white; -fx-border-color: #DEE2E6; -fx-border-radius: 5; }
+.table-view .column-header { -fx-background-color: #B35A00; }
+.table-view .column-header .label { -fx-text-fill: white; -fx-font-weight: bold; }
+.table-row-cell:selected { -fx-background-color: #FFE0B2; }
+
+/* ── Sidebar ── */
+.sidebar { -fx-background-color: #B35A00; -fx-padding: 20 0; }
+.sidebar-item {
+    -fx-background-color: transparent;
+    -fx-text-fill: #FFE0B2;
+    -fx-font-size: 14px;
+    -fx-padding: 12 25;
+    -fx-cursor: hand;
+    -fx-alignment: CENTER_LEFT;
+}
+.sidebar-item:hover { -fx-background-color: rgba(255,255,255,0.1); -fx-text-fill: white; }
+.sidebar-item-actif { -fx-background-color: rgba(255,255,255,0.15); -fx-text-fill: white; -fx-font-weight: bold; }
+
+/* ── Zone test couleur ── */
+.zone-test-couleur {
+    -fx-background-color: white;
+    -fx-background-radius: 15;
+    -fx-padding: 40;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 20, 0, 0, 5);
+}
+
+/* ── Progress & Scroll ── */
+.progress-indicator { -fx-accent: #B35A00; }
+.scroll-pane { -fx-background-color: transparent; -fx-background: transparent; }
+.scroll-pane > .viewport { -fx-background-color: transparent; }
+
+/* ── GAP 2 FIX: Login left panel ───── */
+.login-panneau-gauche      { -fx-background-color: #B35A00; }
+.login-panneau-sous-titre  { -fx-text-fill: #FFE0B2; -fx-font-size: 13px; }
+.bouton-vocal-login {
+    -fx-background-color: #FFD700;
+    -fx-text-fill: #7A3D00;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 12 20;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+
+/* ── GAP 2 FIX: Dashboard welcome banner ─ */
+.dashboard-banniere-accueil    { -fx-background-color: #B35A00; }
+.dashboard-banniere-sous-titre { -fx-text-fill: #FFE0B2; -fx-font-size: 13px; }

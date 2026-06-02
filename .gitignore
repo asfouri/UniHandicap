@@ -1,0 +1,39 @@
+# Java / Maven
+/target/
+*.class
+*.jar
+*.war
+*.ear
+*.log
+
+# IDEs
+.idea/
+.vscode/
+*.iml
+.nb-gradle/
+build/
+dist/
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/nbdist/
+/.nb-gradle/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment and secrets
+.env
+*.env
+*.key
+*.pem
+
+# Local speech-recognition models (large files)
+vosk-model*/
+models/
+
+# Runtime generated exports
+exports/
+generated-pdfs/
